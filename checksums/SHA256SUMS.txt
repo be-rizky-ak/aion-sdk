@@ -1,8 +1,2 @@
-6265bcad1a6461e81eb95123e902eaf8901247e7836ed99ecfda9d194e626b0b  AionSDK-1.0.0-linux-x86_64-Debug.tar.gz
-16be826b305e4c5bd1f49d0ea9b737a88b358b747f1583591397920fc229576b  AionSDK-1.0.0-linux-x86_64-Debug.zip
-7de83a29c39f7083ec161e4849c0b4c36fbbb753a8e825abad91c87a386869f3  AionSDK-1.0.0-linux-x86_64-Release.tar.gz
-abdc2512a8f11f5c3a357ab5671ec745b08c6efe0518401a78b4b755fef99bb3  AionSDK-1.0.0-linux-x86_64-Release.zip
-fb79184cab21cb764267f71786fb2f67aaaa153c23ea1d3b7f80be6244b96ef5  AionSandbox-1.0.0-linux-x86_64-Debug.tar.gz
-a4398d3c2c2a86c924de38dda6cd1294d93bf8d58aba8ee2ccc82565a588e5ee  AionSandbox-1.0.0-linux-x86_64-Debug.zip
-0eaab7d1f528067b7ce16adafb0c5217ae578ea5d48b9ca8e929ba433271756f  AionSandbox-1.0.0-linux-x86_64-Release.tar.gz
-dc52418417342080057b9c9bc5b4666fb5bb3b5f29fd9fe27f5819c1e75de22e  AionSandbox-1.0.0-linux-x86_64-Release.zip
+0c9c0dcfcfce1fc3f3eafc0b3fb8f76703fcd462a995003c3d1f77b5fec7af06  AionSDK-1.0.0-windows-x86_64.tar.gz
+f9efa177a0c4ee526cc6c8b899a052f2c860f69368a674496c9ecd89806cdfd8  AionSDK-1.0.0-windows-x86_64.zip
