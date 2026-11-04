@@ -1,0 +1,33 @@
+# Build artifacts
+build/
+bin/
+lib/
+dist/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake.in
+
+# Distribution archives (hosted in GitHub Releases, not in git)
+*.tar.gz
+*.zip
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
