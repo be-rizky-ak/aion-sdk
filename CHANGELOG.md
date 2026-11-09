@@ -5,6 +5,54 @@ All notable changes to the Aion SDK will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-11-09
+
+### Added
+- **Audio Subsystem**:
+  - Reusable, low-latency audio subsystem (`Aion::AudioSystem`, `AudioClip`, `AudioSource`, `AudioListener`, `AudioCategory`).
+  - Decoding support for WAV, MP3, and OGG Vorbis audio formats via integrated miniaudio and stb_vorbis.
+  - Spatial 3D audio listener and positional source components (`AudioListener`, `AudioSource`) with 3D attenuation and directional orientation.
+  - Independent volume categories and mixing channels (`Master`, `Music`, `SFX`).
+  - Concurrent one-shot sound effect playback (`AudioSystem::PlayOneShot`).
+  - Audio clip caching (`AssetManager::LoadAudioClip`) and streaming for background music.
+  - Graceful fallback and dummy device handling for headless Linux / CI environments without physical audio hardware.
+  - Automated test suite `AudioSystemTest` validating audio subsystem lifecycle and controls.
+- **Task System and Concurrency**:
+  - Multi-threaded worker pool (`Aion::TaskSystem`) with task queue synchronization, worker thread lifecycle, and `std::future` task tracking.
+  - Safe thread shutdown and task completion barriers.
+- **Configurable Console Logging**:
+  - Centralized diagnostic sink (`Aion::Log`) with build-time and runtime toggling (`AION_ENABLE_CONSOLE_LOG`).
+  - Per-configuration defaults: enabled in Debug builds, suppressed in Release builds.
+  - Runtime override via `Aion::Log::SetConsoleLoggingEnabled` and `ApplicationSpecification.EnableConsoleLogging`.
+- **Animation System Extensions**:
+  - Configurable playback speed multiplier (`SetPlaybackSpeed`, `GetPlaybackSpeed`).
+  - Playback control and telemetry queries (`Reset()`, `IsPlaying()`, `GetClipNames()`).
+- **Asset Pipeline & Importers**:
+  - SVG asset rasterization and texture generation (`Aion::SVGImporter`).
+  - Standalone 8-bit and floating-point HDR image container abstraction (`Aion::Image`).
+
+### Rendering
+- Seamless 360-degree equirectangular skybox mapping and fullscreen quad background rendering pass.
+- Aspect ratio (2:1) validation for equirectangular environment textures.
+- Render state protection disabling face culling and depth test during cubemap rendering.
+- Standalone `RenderCommand` viewport management and `VertexArray` state encapsulation.
+
+### Fixed
+- Ensured deterministic cleanup of `TextureLibrary` during renderer shutdown to prevent `glDeleteTextures` segfaults during static destruction after OpenGL context termination.
+- Resolved black window rendering in external SDK consumers by standardizing camera aspect ratio and default look-at orientations.
+
+### Build and SDK
+- Pinned `external/miniaudio` Git submodule to release 0.11.26 and eliminated duplicate third-party header vendoring.
+- Unified SDK packaging scripts (`package.sh` and `package.bat`) with multi-configuration staging (`dist/sdk/<Config>/AionSDK` and `dist/sandbox/<Config>/AionSandbox`).
+- Automatic generation of release archives (`.tar.gz`, `.zip`) and SHA-256 checksums (`SHA256SUMS.txt`).
+- Exported CMake target `Aion::AionEngine` automatically resolves `Threads::Threads` and `OpenGL::GL` dependencies for downstream consumers.
+
+### Breaking Changes
+- **None**. All changes in 1.1.0 are strictly backward compatible additions adhering to minor semantic versioning.
+
+### Known Limitations
+- **Skeletal Skinning Limit**: Skeletal animation shaders support up to 128 joints per model; models exceeding 128 joints fallback to unskinned rendering with a diagnostic warning.
+
 ## [1.0.0] - 2026-11-03
 
 ### Added

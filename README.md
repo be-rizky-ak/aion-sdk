@@ -1,10 +1,11 @@
 # Aion SDK
 
+[![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-blue.svg)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Standard: C++20](https://img.shields.io/badge/Standard-C%2B%2B20-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B20)
 [![Graphics: OpenGL 3.3 Core](https://img.shields.io/badge/Graphics-OpenGL%203.3%20Core-green.svg)](https://www.khronos.org/opengl/)
 
-**Aion** is a modular, general-purpose 3D engine and framework written in standard C++20 using OpenGL 3.3 Core Profile for rendering. It provides an efficient foundation for 3D simulations, real-time graphics applications, and game development with a clean application lifecycle, hierarchical scene graph, component architecture, glTF/GLB asset importing, and modern CMake integration.
+**Aion** is a modular, general-purpose 3D engine and framework written in standard C++20 using OpenGL 3.3 Core Profile for rendering. It provides an efficient foundation for 3D simulations, real-time graphics applications, and game development with a clean application lifecycle, hierarchical scene graph, component architecture, glTF/GLB asset importing, multi-threaded task system, reusable audio subsystem, and modern CMake integration.
 
 This repository distributes the public Aion Software Development Kit (SDK), including public C++ headers, prebuilt static libraries, CMake package configurations, runtime shaders, comprehensive documentation, and external consumer examples.
 
@@ -14,17 +15,19 @@ This repository distributes the public Aion Software Development Kit (SDK), incl
 
 The Aion SDK provides only verified, fully implemented functionality:
 
-- **Application Lifecycle:** Clean lifecycle architecture (`Aion::Application`) supporting `OnCreate()`, `OnUpdate()`, `OnRender()`, `OnEvent()`, and `OnDestroy()`, with configurable window dimensions, titles, and VSync.
+- **Application Lifecycle:** Clean lifecycle architecture (`Aion::Application`) supporting `OnCreate()`, `OnUpdate()`, `OnRender()`, `OnEvent()`, and `OnDestroy()`, with configurable window dimensions, titles, VSync, and console logging control.
 - **Hierarchical Scene Graph:** Parent-child transform hierarchies (`Aion::Object3D`, `Aion::Transform`) with automatic local and world matrix propagation, quaternion rotations, and bounding volume computation.
-- **Component Model:** Extensible component architecture including `CameraComponent`, `CameraControllerComponent`, `MeshRenderer`, `ModelComponent`, `AnimationComponent`, and `RotatorComponent`.
-- **Renderer Subsystem:** Forward rendering using OpenGL 3.3 Core Profile with depth testing, viewport adaptation, render state guards, and frustum culling.
+- **Component Model:** Extensible component architecture including `CameraComponent`, `CameraControllerComponent`, `MeshRenderer`, `ModelComponent`, `AnimationComponent`, `AudioSource`, `AudioListener`, and `RotatorComponent`.
+- **Audio Subsystem:** High-performance, low-latency audio engine (`Aion::AudioSystem`, `AudioClip`, `AudioSource`, `AudioListener`, `AudioCategory`) supporting WAV, MP3, and OGG Vorbis playback, 3D spatial positioning, independent volume categories (`Master`, `Music`, `SFX`), and one-shot playback.
+- **Task System:** Built-in multi-threaded worker pool (`Aion::TaskSystem`) with task synchronization and `std::future` tracking.
+- **Renderer Subsystem:** Forward rendering using OpenGL 3.3 Core Profile with depth testing, viewport adaptation, render state guards, frustum culling, and equirectangular skybox rendering.
 - **Camera System:** Perspective and orthographic cameras (`PerspectiveCamera`, `OrthographicCamera`) with configurable field of view, near/far planes, and interactive first-person fly camera controls.
 - **Procedural Geometry:** Built-in primitive mesh generation via `MeshFactory` (Cube, Plane, Sphere, Capsule).
 - **Materials & Shaders:** PBR-inspired material parameters (base color, metallic, roughness, emissive) and shader management with built-in GLSL 330 standard shaders and embedded C++ shader fallbacks.
 - **Image-Based Lighting (IBL):** Procedural sky environment generation and diffuse/specular ambient irradiance convolution.
-- **Asset Pipeline:** glTF 2.0 and binary GLB model loading via TinyGLTF, skeletal animation playback and clip blending, 2D texture loading via stb_image, and Virtual File System (VFS) catalog support.
+- **Asset Pipeline:** glTF 2.0 and binary GLB model loading via TinyGLTF, skeletal animation playback and clip blending, 2D texture loading via stb_image, SVG vector rasterization, and Virtual File System (VFS) catalog support.
 - **Windowing & Input:** Cross-platform window creation, keyboard state, mouse positioning, mouse buttons, and scroll delta tracking via GLFW.
-- **Modern CMake Export:** Native CMake package configuration with imported targets (`Aion::AionEngine`), automatic dependency linking, and Semantic Versioning compatibility.
+- **Modern CMake Export:** Native CMake package configuration with imported targets (`Aion::AionEngine`), automatic dependency linking (`Threads::Threads`, `OpenGL::GL`), and Semantic Versioning compatibility.
 
 ---
 
@@ -45,10 +48,10 @@ The Aion SDK provides only verified, fully implemented functionality:
 
 ## SDK Installation Overview
 
-1. Download the unified release archive for Windows x64 from GitHub Releases (e.g. `AionSDK-1.0.0-windows-x86_64.zip`), which contains both Debug and Release libraries in a single distribution.
+1. Download the unified release archive for Windows x64 from GitHub Releases (e.g. `AionSDK-1.1.0-windows-x86_64.zip`), which contains both Debug and Release libraries in a single distribution.
 2. Verify the archive against the official checksums in [`checksums/SHA256SUMS.txt`](checksums/SHA256SUMS.txt) using PowerShell:
    ```powershell
-   Get-FileHash -Algorithm SHA256 .\AionSDK-1.0.0-windows-x86_64.zip
+   Get-FileHash -Algorithm SHA256 .\AionSDK-1.1.0-windows-x86_64.zip
    ```
 3. Extract the archive into your preferred installation location (e.g., `C:\AionSDK`).
 4. In your project's `CMakeLists.txt`, find and link Aion:
@@ -77,6 +80,7 @@ The Aion SDK provides only verified, fully implemented functionality:
 
 Detailed guides are available in the [`docs/`](docs/) directory:
 
+- [Release Notes 1.1.0](RELEASE_NOTES_1.1.0.md) — Comprehensive release summary and new feature guide.
 - [Getting Started Guide](docs/getting-started.md) — Write and run your first Aion application.
 - [Installation Guide](docs/installation.md) — Extract, verify, and understand the SDK package layout.
 - [CMake Integration Guide](docs/cmake-integration.md) — CMake project configuration, exported targets, and asset copying.

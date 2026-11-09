@@ -197,6 +197,41 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+-------------------------------------------------------------------------------
+7. miniaudio (v0.11.26)
+-------------------------------------------------------------------------------
+License: Dual License (MIT-0 / Public Domain)
+Website: https://github.com/mackron/miniaudio
+
+David Reid - mackron@gmail.com
+
+Choice of public domain or MIT-0:
+
+MIT-0 License:
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+
+
+-------------------------------------------------------------------------------
+8. stb_vorbis
+-------------------------------------------------------------------------------
+License: Public Domain / MIT License
+Website: https://github.com/nothings/stb
+
+Original version written by Sean Barrett in 2007.
+This software is in the public domain. Where that dedication is not
+recognized, you are granted a perpetual, irrevocable license to copy,
+distribute, and modify this file as you see fit.
+
+
 ===============================================================================
 SECTION 2: SANDBOX-ONLY DEPENDENCIES
 ===============================================================================

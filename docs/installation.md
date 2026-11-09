@@ -21,8 +21,8 @@ Prebuilt SDK archives are distributed via GitHub Releases. The official Windows 
 
 | Archive Filename | Description | Configuration |
 |---|---|---|
-| `AionSDK-1.0.0-windows-x86_64.zip` | Windows x64 Unified SDK Archive (Zip) | Debug & Release |
-| `AionSDK-1.0.0-windows-x86_64.tar.gz` | Windows x64 Unified SDK Tarball | Debug & Release |
+| `AionSDK-1.1.0-windows-x86_64.zip` | Windows x64 Unified SDK Archive (Zip) | Debug & Release |
+| `AionSDK-1.1.0-windows-x86_64.tar.gz` | Windows x64 Unified SDK Tarball | Debug & Release |
 
 ### Verifying Checksums
 
@@ -30,12 +30,12 @@ Verify the authenticity of your downloaded archive using the SHA-256 checksums p
 
 In PowerShell:
 ```powershell
-Get-FileHash -Algorithm SHA256 .\AionSDK-1.0.0-windows-x86_64.zip
+Get-FileHash -Algorithm SHA256 .\AionSDK-1.1.0-windows-x86_64.zip
 ```
 
 Or using Command Prompt (`certutil`):
 ```cmd
-certutil -hashfile AionSDK-1.0.0-windows-x86_64.zip SHA256
+certutil -hashfile AionSDK-1.1.0-windows-x86_64.zip SHA256
 ```
 
 ---
@@ -46,13 +46,13 @@ Extract the archive into your preferred installation directory, for example `C:\
 
 Using PowerShell:
 ```powershell
-Expand-Archive -Path AionSDK-1.0.0-windows-x86_64.zip -DestinationPath C:\AionSDK
+Expand-Archive -Path AionSDK-1.1.0-windows-x86_64.zip -DestinationPath C:\AionSDK
 ```
 
 Or using the built-in Windows `tar` utility:
 ```cmd
 mkdir C:\AionSDK
-tar -xf AionSDK-1.0.0-windows-x86_64.zip -C C:\AionSDK
+tar -xf AionSDK-1.1.0-windows-x86_64.zip -C C:\AionSDK
 ```
 
 After extraction, the SDK base directory is `C:\AionSDK\AionSDK`.
