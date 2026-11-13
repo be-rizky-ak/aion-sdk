@@ -27,7 +27,8 @@ public:
             .Name = "Aion SDK - Basic Application",
             .Width = 800,
             .Height = 600,
-            .VSync = true
+            .VSync = true,
+            .EnableConsoleLogging = true
         }),
         m_TestMode(testMode)
     {

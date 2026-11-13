@@ -1,6 +1,6 @@
 # Getting Started with Aion SDK
 
-This guide walks you through building your first 3D application with the Aion C++20 engine framework using the Aion SDK.
+This guide walks you through building your first 3D application with the Aion C++20 engine framework using the Aion SDK 1.2.0 for native desktop (Windows/Linux) and WebAssembly (WebGL 2).
 
 ---
 
@@ -8,11 +8,11 @@ This guide walks you through building your first 3D application with the Aion C+
 
 Aion is organized into modular subsystems:
 
-- **Application (`Aion::Application`):** Manages the main game/application lifecycle, window creation, OpenGL context initialization, input polling, and frame timing.
-- **Scene (`Aion::Scene`):** Owns the scene graph, object hierarchies, and active camera pointers.
-- **Entities & Transforms (`Aion::Object3D`, `Aion::Transform`):** Hierarchical objects supporting position, rotation (quaternion), and scale, with parent-child matrix propagation.
-- **Components (`Aion::Component`):** Extend entity behavior, such as `CameraComponent`, `CameraControllerComponent`, `MeshRenderer`, and `RotatorComponent`.
-- **Renderer (`Aion::Renderer`):** Manages OpenGL 3.3 Core Profile forward rendering, depth states, shader uniforms, frustum culling, and Image-Based Lighting (IBL).
+- **Application (`Aion::Application`):** Manages the application lifecycle, window/canvas creation, graphics context initialization, event polling, and frame timing. On the Web, it seamlessly integrates with the browser animation loop (`emscripten_set_main_loop_arg`).
+- **Scene (`Aion::Scene`):** Owns the scene graph, object hierarchies, and active camera references.
+- **Entities & Transforms (`Aion::Object3D`, `Aion::Transform`):** Hierarchical objects supporting position, rotation (quaternions), and scale, with automatic parent-child matrix propagation.
+- **Components (`Aion::Component`):** Extend entity behavior, such as `CameraComponent`, `CameraControllerComponent`, `MeshRenderer`, `AudioSource`, and `RotatorComponent`.
+- **Renderer (`Aion::Renderer`):** Manages OpenGL 3.3 Core Profile forward rendering on desktop and WebGL 2 on WebAssembly, with depth testing, shader uniforms, frustum culling, and Image-Based Lighting (IBL).
 
 ---
 
@@ -35,7 +35,8 @@ public:
             .Name = "My First Aion Game",
             .Width = 1280,
             .Height = 720,
-            .VSync = true
+            .VSync = true,
+            .EnableConsoleLogging = true
         })
     {
     }
@@ -138,8 +139,30 @@ void AddCube(Aion::Scene* scene)
 
 ---
 
-## 5. Next Steps
+## 5. Building and Running
 
-- Follow the [Installation Guide](installation.md) to extract the SDK package.
-- Follow the [CMake Integration Guide](cmake-integration.md) to set up your project build.
+### Native Desktop (Windows / Linux)
+```bash
+cmake -S . -B build -DCMAKE_PREFIX_PATH=/path/to/AionSDK -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+./build/MyGameApp
+```
+
+### WebAssembly (WebGL 2)
+```bash
+emcmake cmake -S . -B build_web -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH -DCMAKE_PREFIX_PATH=/path/to/AionSDK
+cmake --build build_web
+```
+To run the Web build, serve the output directory using a local HTTP server:
+```bash
+python3 -m http.server 8080 -d build_web
+# Open http://localhost:8080/MyGameApp.html in your browser
+```
+
+---
+
+## 6. Next Steps
+
+- Follow the [Installation Guide](installation.md) to extract and verify the SDK package.
+- Follow the [CMake Integration Guide](cmake-integration.md) for detailed CMake configuration and Web options.
 - Review [Troubleshooting](troubleshooting.md) if you encounter build or runtime issues.
